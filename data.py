@@ -1,3 +1,4 @@
+# %load data.py
 from torchvision.datasets import CIFAR10
 from torchvision.transforms import transforms
 from torch.utils.data import DataLoader
@@ -11,7 +12,7 @@ def get_data():
     ])
 
     # CIFAR10 dataset consists of 50K training images. We define the batch size of 10 to load 5,000 batches of images.
-    batch_size = 10
+    batch_size = 512
     number_of_labels = 10 
 
     # Create an instance for training. 

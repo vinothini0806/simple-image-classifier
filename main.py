@@ -5,6 +5,8 @@ from model import Network
 from loss import get_loss
 from train import *
 from torch.optim import Adam
+import wandb
+import os
 # Function to show the images
 # def imageshow(img):
 #     img = img / 2 + 0.5     # unnormalize
@@ -36,12 +38,46 @@ from torch.optim import Adam
 #                               for j in range(batch_size)))
 
 def main():
+    
+    wandb.init(project='cnn')
+    
     train_loader,test_loader,classes = get_data()
     model = Network()
     criterion = get_loss()
+    # Define your execution device
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    print("The model will be running on", device, "device")
+    # Convert model parameters and buffers to CPU or Cuda
+    model.to(device)
+    
     optimizer = Adam(model.parameters(), lr=0.001, weight_decay=0.0001)
-    num_epochs = 5
-    train(train_loader, test_loader,model, criterion,optimizer, num_epochs)
+    num_epochs = 20
+    
+    best_accuracy = 0.0
+    
+    wandb.config.update({'lr':0.001,'weight_decay':0.0001,'num_epochs':20})
+    
+    for epoch in range(num_epochs):  # loop over the dataset multiple times
+        running_loss = 0.0
+        running_acc = 0.0
+
+        train_loss, train_acc = train(train_loader,model, criterion,optimizer,device)
+        test_loss, test_acc = test(test_loader,model, criterion,device)
+
+        print('epoch:%d train_loss: %.3f train_accuracy: %.3f test_loss: %.3f test_accuracy: %.3f' % (epoch + 1, train_loss, train_acc,test_loss, test_acc))
+
+        # we want to save the model if the accuracy is the best
+        if test_acc > best_accuracy:
+            saveModel(model)
+            best_accuracy = test_acc
+            
+        wandb.log({
+            'epoch':epoch,
+            'train_loss':train_loss,
+            'train_acc':train_acc,
+            'test_loss':test_loss,
+            'test_acc':test_acc
+        })
 
 if __name__ == "__main__":
     main()
