@@ -13,13 +13,13 @@ The performance of the model was very good and was able to predict the animals w
 
 Plots for model accuracy and loss are following:
 
-![alt text](./output/accuracy_50176images_20epochs.png?raw=true "Model accuracy of training images")
+![alt text](https://raw.githubusercontent.com/vinothini0806/simple-image-classifier/master/output/accuracy_50176images_20epochs.PNG "Model accuracy of training images")
 
-![alt text](./output/loss_50176images_20epochs.png?raw=true "Model loss of training images")
+![alt text](https://raw.githubusercontent.com/vinothini0806/simple-image-classifier/master/output/loss_50176images_20epochs.PNG "Model loss of training images")
 
-![alt text](./output/accuracy_9824images_20epochs.png?raw=true "Model accuracy of testing images")
+![alt text](https://raw.githubusercontent.com/vinothini0806/simple-image-classifier/master/output/accuracy_9824images_20epochs.PNG "Model accuracy of testing images")
 
-![alt text](./output/loss_9824images_20epochs.png?raw=true "Model loss of testing images")
+![alt text](https://raw.githubusercontent.com/vinothini0806/simple-image-classifier/master/output/loss_9824images_20epochs.PNG "Model loss of testing images")
 
 
 
