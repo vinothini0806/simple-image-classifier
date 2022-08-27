@@ -1,6 +1,6 @@
 # simple-image-classifier
 ### Results:
-- Results after training 18,000 images of cats and dogs:
+- Results after training 50,176 images of CIFA10 image data set:
     - number of epochs = 25
     - MODEL 
         - CONV 5x5 filter layers with batch norm - **12 x 12 x 24 x 24** 
@@ -13,7 +13,7 @@ The performance of the model was very good and was able to predict the animals w
 
 Plots for model accuracy and loss are following:
 
-![alt text](./output/accuracy_5000images_15epochs.png?raw=true "Model accuracy with 5000 images")
+![alt text](./output/accuracy_5000images_15epochs.png?raw=true "Model accuracy with 50 images")
 
 ![alt text](./output/loss_5000images_15epochs.png?raw=true "Model loss with 5000 images")
 
@@ -24,7 +24,6 @@ Plots for model accuracy and loss are following:
 
 
 ### Instructions to run the code:
-[Input dataset](https://drive.google.com/file/d/19inwa0n1W4DZamjCOm5XAlztvqG_xkjP/view?usp=sharing)
 
 - Go to directory:  _/_
 - To start the training run: 
